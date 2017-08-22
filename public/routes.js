@@ -14,7 +14,7 @@ NeymarEstCher.config(function($stateProvider, $urlRouterProvider) {
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
         .state('1', {
             url: '/1',
-            templateUrl: 'templates/question.html'
+            template: '<core></core>'
         });
 
 });
