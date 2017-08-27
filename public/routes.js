@@ -12,8 +12,8 @@ NeymarEstCher.config(function($stateProvider, $urlRouterProvider) {
         })
 
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
-        .state('1', {
-            url: '/1',
+        .state('question', {
+            url: '/question/:questionid',
             template: '<core></core>'
         });
 

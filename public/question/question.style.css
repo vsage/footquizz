@@ -1,0 +1,101 @@
+
+/*.answer-row{
+
+  border: 1px solid grey;
+
+}*/
+.flex-div{
+  height: 90px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.answer-row {
+  position: relative;
+  cursor: pointer;
+  min-height: 90px;
+  display: block;
+  margin: 20px auto;
+  vertical-align: middle;
+
+  overflow: hidden;
+
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+
+  background-color: rgb(255,255,255);
+  color: rgb(100,100,100);
+
+  transition: background-color .3s;
+}
+
+.answer-row:hover, .answer-row:focus {
+  background-color: rgb(245,245,245);
+}
+
+.answer-row > * {
+  position: relative;
+}
+
+.answer-row span {
+  /*display: block;
+  padding: 12px 24px;*/
+}
+
+.answer-row:before {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: block;
+  width: 0;
+  padding-top: 0;
+
+  border-radius: 100%;
+
+  background-color: rgba(236, 240, 241, .3);
+
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.answer-row:active:before {
+  width: 120%;
+  padding-top: 120%;
+
+  transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+/* Styles, not important */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+h2 {
+  font-weight: normal;
+}
+
+.answer-row.orange {
+  background-color: #e67e22;
+}
+
+.answer-row.orange:hover, .answer-row.orange:focus {
+  background-color: #d35400;
+}
+
+.answer-row.red {
+  background-color: #e74c3c;
+}
+
+.answer-row.red:hover, .answer-row.red:focus {
+  background-color: #c0392b;
+}

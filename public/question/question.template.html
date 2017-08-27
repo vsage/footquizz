@@ -1,6 +1,20 @@
-  <div class="tile-map-figure positive">
-    <p>Question: {{$ctrl.q.question}}</p>
-    <div class="row" ng-repeat="(key, answer) in $ctrl.q.answers">
-      <button class="btn btn-default" name="button" ng-click="$ctrl.chose(key)">{{key}} : {{answer}}</button>
+<div class="jumbotron">
+  <h1>{{$ctrl.q.category | uppercase}}</h1>
+  <p class="lead" data-meaningful="true" ct-id="1">
+    {{$ctrl.q.question}}
+  </p>
+  <!-- <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p> -->
+</div>
+
+<div class="tile-map-figure positive">
+  <div class="row">
+    <div class="col-md-6" ng-repeat="(key, answer) in $ctrl.q.answers">
+      <div class="answer-row text-center" ng-click="$ctrl.chose(answer.level)">
+        <div class="flex-div">
+          <p style="text-align:center; padding:5px; font-size: 16px">{{answer.answer}}</p>
+        </div>
+      </div>
     </div>
+    <!-- <button class="btn btn-default" name="button" ></button> -->
   </div>
+</div>

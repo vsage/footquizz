@@ -1,10 +1,11 @@
-function QuestionController(questions){
+function QuestionController(questions, $stateParams){
     var ctrl = this;
-    ctrl.test = "test"
-    // ctrl.question = questions.first.question;
+
     ctrl.$onInit = function(){
-      // ctrl.test = questions.first.question;
-      console.log(ctrl);
+      console.log("init", ctrl.q);
+    }
+    ctrl.$onChanges = function(changesObj){
+      console.log(changesObj);
     }
 
     ctrl.chose = function(key){
