@@ -19,18 +19,46 @@ NeymarEstCher.constant('questions', {
       {
         question: "Tu te retrouves face au dernier défenseur de l’équipe adverse, il est temps de lâcher ton meilleur dribble.",
         answers: [
-            {answer: "Tu as grandi ballon au pied entre favelas et terrains vagues. Pas besoin de réfléchir, tu laisses parler ton instinct.",
-            level: "a"},
-            {answer: "Tu te raccroches au seul dribble que tu maîtrises. Pas de folie, petite feinte de corps et crochet de l’autre côté.",
-            level: "b"},
-            {answer: "Pas de fantaisie, tu pousses ton ballon et commences à sortir le coude pour intimider ton vis-à-vis.",
-            level: "c"},
-            {answer: "C’était quoi ce dribble vu sur une vidéo YouTube « skills and goals » hier déjà? Tu envoies ce fameux double contact mais te rends vite compte que c’est un peu trop osé.",
-            level: "d"},
-            {answer: "Toi face au dernier défenseur? Pas le temps de mouiller ton caleçon, l’émotion est trop forte, tu te réveilles.",
-            level: "e"}
+          {answer: "Tu as grandi ballon au pied entre favelas et terrains vagues. Pas besoin de réfléchir, tu laisses parler ton instinct.",
+          level: "a"},
+          {answer: "Tu te raccroches au seul dribble que tu maîtrises. Pas de folie, petite feinte de corps et crochet de l’autre côté.",
+          level: "b"},
+          {answer: "Pas de fantaisie, tu pousses ton ballon et commences à sortir le coude pour intimider ton vis-à-vis.",
+          level: "c"},
+          {answer: "C’était quoi ce dribble vu sur une vidéo YouTube « skills and goals » hier déjà? Tu envoies ce fameux double contact mais te rends vite compte que c’est un peu trop osé.",
+          level: "d"},
+          {answer: "Toi face au dernier défenseur? Pas le temps de mouiller ton caleçon, l’émotion est trop forte, tu te réveilles.",
+          level: "e"}
         ],
         category: "Technique"
       }
     ]
 })
+.factory('score', ['$window', function($window) {
+   var score = {"Physique": 0, "Technique": 0, "Vision": 0, "Defense": 0};
+   return {
+     scoreUpdate: function(answer, category) {
+       var points = 0;
+       switch (answer) {
+         case "a":
+            points = 40;
+           break;
+         case "b":
+            points = 30;
+           break;
+         case "c":
+            points = 20;
+           break;
+         case "d":
+            points = 10;
+           break;
+         case "e":
+            points = 0;
+           break;
+         default:
+       }
+       score[category] += points;
+       console.log(score);
+     }
+   }
+ }]);

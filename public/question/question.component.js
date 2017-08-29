@@ -9,7 +9,7 @@ function QuestionController(questions, $stateParams){
     }
 
     ctrl.chose = function(key){
-      ctrl.onUpdate({q:key})
+      ctrl.onUpdate({answer:key})
     }
 
 }
