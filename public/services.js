@@ -31,34 +31,70 @@ NeymarEstCher.constant('questions', {
           level: "e"}
         ],
         category: "Technique"
+      },
+      {
+        question: "Comment les défenseurs adverses ont-ils pu jouer le hors-jeu là-dessus ? Tu te retrouves seul à l'entrée de la surface et si l'ouverture vient de loin, elle paraît millimétrée...",
+        answers: [
+          {answer: "Photo de Neymar qui contrôle.",
+          level: "a"},
+          {answer: "Tu ouvres le pied façon Zizou pour caresser le cuir et t'emmener le ballon sereinement.",
+          level: "b"},
+          {answer: "Tu as déjà réussi des contrôles plus difficiles à l’entraînement alors on y croit. Tu as beau te concentrer, la balle rebondit sur ton tibia et file un peu loin. Peut-être trop loin mais tu te jettes pour tenter le pointard.",
+          level: "c"},
+          {answer: "Meeeeeerde, désolé les gars… En prenant soin de ne croiser le regard de personne, tu retournes à ton poste tête basse. ",
+          level: "d"},
+          {answer: "Pour masquer ton incapacité absolue à contrôler un ballon correctement, tu tentes la reprise acrobatique. Moins honteux si tu te foires. Mais qu'est-ce qui t'a pris de te retrouver en si bonne position bon sang !",
+          level: "e"}
+        ],
+        category: "Technique"
       }
     ]
 })
-.factory('score', ['$window', function($window) {
+.factory('convert', ['$window', function($window) {
+  var score = {"Physique": 0, "Technique": 0, "Vision": 0, "Defense": 0};
+  return function(answer) {
+      var points = 0;
+      switch (answer) {
+        case "a":
+           points = 40;
+          break;
+        case "b":
+           points = 30;
+          break;
+        case "c":
+           points = 20;
+          break;
+        case "d":
+           points = 10;
+          break;
+        case "e":
+           points = 0;
+          break;
+        default:
+      }
+    return points;
+  }
+}])
+.factory('score', ['$window', 'convert', function($window, convert) {
    var score = {"Physique": 0, "Technique": 0, "Vision": 0, "Defense": 0};
+   var previousAnswers = [];
    return {
-     scoreUpdate: function(answer, category) {
-       var points = 0;
-       switch (answer) {
-         case "a":
-            points = 40;
-           break;
-         case "b":
-            points = 30;
-           break;
-         case "c":
-            points = 20;
-           break;
-         case "d":
-            points = 10;
-           break;
-         case "e":
-            points = 0;
-           break;
-         default:
-       }
+     scoreUpdate: function(points, category) {
        score[category] += points;
-       console.log(score);
+     },
+     pushScore: function(points, id, category){
+       previousAnswers[id] = {points: points, category: category}
+     },
+     previousScoreExists: function(id){
+       var returnValue = undefined;
+       if (previousAnswers[id]) {
+         returnValue = previousAnswers[id]
+         previousAnswers[id] = undefined
+       }
+       return returnValue;
+     },
+     currentScore: function(){
+       return score;
      }
    }
- }]);
+ }])
